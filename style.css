@@ -137,7 +137,7 @@ header {
 
 .hero-image {
   position: relative;
-  flex: 0 0 260px;
+  flex: 0 0 280px;
   width: min(320px, 100%);
   border-radius: 28px;
   overflow: hidden;
@@ -149,8 +149,8 @@ header {
 .hero-image::after {
   content: "online";
   position: absolute;
-  top: 14px;
-  right: 14px;
+  top: 12px;
+  right: 12px;
   padding: 0.28rem 0.65rem;
   border-radius: 999px;
   background: rgba(5, 6, 10, 0.72);
