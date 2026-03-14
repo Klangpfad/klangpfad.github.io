@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://klangpfad.github.io/sitemap.xml
