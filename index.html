@@ -192,6 +192,12 @@ Keine Show. Keine Buzzwords. Nur Technik, Klarheit und Dinge, die funktionieren.
   </div>
 </footer>
 
+  <div id="runlevel-console" aria-hidden="true">
+  <span class="runlevel-user">tom@gina</span>:~$ runlevel<br>
+  N 5<br>
+  system ready · gina online · uptime ∞
+</div>
+
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -257,6 +263,33 @@ Keine Show. Keine Buzzwords. Nur Technik, Klarheit und Dinge, die funktionieren.
             <p class="links"><a href="https://github.com/Klangpfad" target="_blank" rel="noopener noreferrer">github.com/Klangpfad</a></p>
           </article>`;
       });
+
+    let runlevelBuffer = '';
+    let runlevelTimer;
+
+    document.addEventListener('keydown', (event) => {
+      if (event.ctrlKey || event.altKey || event.metaKey || event.key.length !== 1) {
+        return;
+      }
+
+      runlevelBuffer += event.key.toLowerCase();
+      runlevelBuffer = runlevelBuffer.slice(-8);
+
+      if (runlevelBuffer.includes('runlevel')) {
+        const consoleBox = document.getElementById('runlevel-console');
+        if (!consoleBox) {
+          return;
+        }
+
+        consoleBox.classList.add('show');
+        clearTimeout(runlevelTimer);
+        runlevelTimer = setTimeout(() => {
+          consoleBox.classList.remove('show');
+        }, 4500);
+
+        runlevelBuffer = '';
+      }
+    });
   </script>
 </body>
 </html>

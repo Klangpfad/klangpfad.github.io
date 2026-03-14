@@ -527,6 +527,72 @@ body.legal::before {
   }
 }
 
+
+.terminal {
+  position: relative;
+}
+
+.terminal::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow:
+    0 0 0 1px rgba(127, 176, 255, 0.08),
+    0 0 22px rgba(63, 130, 255, 0.12),
+    0 0 60px rgba(63, 130, 255, 0.08);
+}
+
+.terminal-body {
+  position: relative;
+}
+
+.terminal-body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse at 50% 30%,
+      rgba(127, 176, 255, 0.05),
+      transparent 70%
+    );
+}
+
+#runlevel-console {
+  position: fixed;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  width: min(680px, 92vw);
+  background: #0b0e17;
+  border: 1px solid rgba(127, 176, 255, 0.25);
+  border-radius: 12px;
+  font: 0.9rem/1.6 "SFMono-Regular", Consolas, monospace;
+  color: #cfe3ff;
+  padding: 0.8rem 1rem;
+  box-shadow:
+    0 0 20px rgba(63, 130, 255, 0.18),
+    0 12px 40px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease;
+  z-index: 999;
+}
+
+#runlevel-console.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+#runlevel-console .runlevel-user {
+  color: #86b4ff;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
