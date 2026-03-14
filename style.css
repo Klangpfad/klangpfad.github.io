@@ -604,3 +604,25 @@ body.legal::before {
     transition: none !important;
   }
 }
+
+.system-status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 0.9rem;
+  font-size: 0.84rem;
+  color: var(--muted-2);
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px rgba(127,176,255,0.45);
+}
+
+.status-sep {
+  opacity: 0.55;
+}
