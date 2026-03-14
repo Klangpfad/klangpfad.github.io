@@ -173,7 +173,7 @@ main {
 }
 
 section {
-  margin: 2rem 0;
+  margin: 2.6rem 0;
 }
 
 .section-head {
@@ -182,7 +182,7 @@ section {
   align-items: end;
   gap: 1rem;
   flex-wrap: wrap;
-  margin-bottom: 0.9rem;
+  margin-bottom: 1.1rem;
 }
 
 h2 {
@@ -229,6 +229,12 @@ h2 {
   padding: 1.15rem 1.2rem;
 }
 
+.grid .card {
+  display: flex;
+  flex-direction: column;
+  min-height: 220px;
+}
+
 .card h3,
 .repo-card h3 {
   margin-top: 0;
@@ -243,18 +249,61 @@ h2 {
   color: var(--muted);
 }
 
+.grid .card p {
+  line-height: 1.58;
+}
+
+.grid .card .links {
+  margin-top: 0.75rem;
+  margin-bottom: 0.2rem;
+}
+
+.grid .card .tag {
+  margin-top: auto;
+}
+
 .tag,
 .mini-tag {
-  padding: 0.2rem 0.55rem;
-  background: rgba(255, 255, 255, 0.04);
-  font-size: 0.76rem;
-  color: #b6b6b6;
+  padding: 0.16rem 0.5rem;
+  background: rgba(255, 255, 255, 0.025);
+  font-size: 0.72rem;
+  color: var(--muted-2);
   margin-top: 0.45rem;
-  border: 1px solid rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.035);
 }
 
 .mini-tag {
   margin-top: 0;
+}
+
+.card .links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.34rem 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--accent);
+  text-decoration: none;
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    background-color 0.18s ease,
+    color 0.18s ease;
+}
+
+.card .links a:hover {
+  color: #a9c6ff;
+  text-decoration: none;
+  border-color: rgba(127, 176, 255, 0.28);
+  background: rgba(127, 176, 255, 0.06);
+  transform: translateY(-1px);
+}
+
+.card .links a:focus-visible {
+  outline: 2px solid var(--accent-strong);
+  outline-offset: 3px;
 }
 
 .card,
@@ -428,6 +477,36 @@ body.legal::before {
 @media (max-width: 720px) {
   header {
     padding-top: 2rem;
+  }
+
+  .hero-actions,
+  .meta-row,
+  .contact-links,
+  .card .links,
+  .footer-links {
+    gap: 0.55rem;
+  }
+
+  .button,
+  .meta-pill,
+  .card .links a {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .grid,
+  .github-grid,
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .card,
+  .repo-card {
+    padding: 1rem;
+  }
+
+  .grid .card {
+    min-height: unset;
   }
 
   .footer-row,
