@@ -2,55 +2,57 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Impressum – runlevel.eth</title>
-  <meta name="robots" content="noindex,follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Impressum – Thomas Harms</title>
+  <meta name="description" content="Impressum der privaten Website von Thomas Harms.">
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="legal">
-  <div class="box">
-    <h1>Impressum</h1>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <nav class="site-nav" aria-label="Hauptnavigation">
+        <a class="logo" href="index.html">Thomas Harms</a>
+        <ul class="nav-links">
+          <li><a href="index.html#projekte">Projekte</a></li>
+          <li><a href="datenschutz.html">Datenschutz</a></li>
+          <li><a href="impressum.html" aria-current="page">Impressum</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-    <p><strong>Angaben gemäß § 5 TMG</strong></p>
+  <main class="container content-page">
+    <section class="panel">
+      <h1>Impressum</h1>
 
-    <p>
-      Thomas Harms<br>
-      Deutschland
-    </p>
+      <p>Angaben gemäß § 5 DDG</p>
 
-    <p>
-      <strong>Kontakt</strong><br>
-      E-Mail: <a href="mailto:klangpfad@posteo.de">klangpfad@posteo.de</a>
-    </p>
+      <p>
+        Thomas Harms<br>
+        Deutschland
+      </p>
 
-    <p>
-      <strong>Projekt</strong><br>
-      Nagelhexe ist eine Android-App zur Motivation und Selbstkontrolle.
-    </p>
+      <p>
+        E-Mail:
+        <a href="mailto:klangpfad@posteo.de">klangpfad@posteo.de</a>
+      </p>
 
-    <p>
-      <strong>Hinweis zur Website</strong><br>
-      Dies ist eine private, nicht kommerzielle Website.
-    </p>
+      <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+      <p>
+        Thomas Harms<br>
+        Deutschland
+      </p>
 
-    <p>
-      <strong>Hinweis</strong><br>
-      Dieses Projekt stellt keine medizinische, therapeutische oder gesundheitsbezogene Beratung dar.
-    </p>
-  </div>
+      <p>Diese Website wird privat betrieben.</p>
+    </section>
+  </main>
 
-  <footer>
-    <div class="footer-row">
-      <div>© <span id="year"></span> runlevel.eth – Tom &amp; Gina</div>
-      <div class="footer-links">
-        <a href="index.html">Startseite</a>
-        <a href="datenschutz.html">Datenschutz</a>
-      </div>
+  <footer class="site-footer">
+    <div class="container footer-links">
+      <a href="index.html">Startseite</a>
+      <a href="datenschutz.html">Datenschutz</a>
+      <a href="impressum.html" aria-current="page">Impressum</a>
     </div>
   </footer>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
