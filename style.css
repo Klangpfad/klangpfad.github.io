@@ -626,3 +626,22 @@ body.legal::before {
 .status-sep {
   opacity: 0.55;
 }
+
+.soundtrack-cover,
+.soundtrack-video {
+  width: 100%;
+  border-radius: 16px;
+  margin-top: 0.8rem;
+  border: 1px solid var(--line);
+}
+
+.soundtrack-meta {
+  margin-top: 0.6rem;
+  color: var(--muted-2);
+  font-size: 0.9rem;
+}
+
+audio {
+  width: 100%;
+  margin-top: 1rem;
+}
