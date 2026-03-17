@@ -37,7 +37,7 @@
         <span class="meta-pill">Systeme mit Ruhe gebaut</span>
         <span class="meta-pill">KI mit Verstand eingesetzt</span>
       </div>
-      
+
       <div class="system-status" aria-label="Systemstatus">
         <span class="status-dot"></span>
         <span>system online</span>
@@ -45,7 +45,7 @@
         <span>github api live</span>
         <span class="status-sep">·</span>
         <span>gina ready</span>
-      </div>    
+      </div>
     </div>
 
     <div class="hero-image">
@@ -122,13 +122,13 @@ Keine Show. Keine Buzzwords. Nur Technik, Klarheit und Dinge, die funktionieren.
         <span class="section-note">Klein, nützlich, ehrlich gebaut</span>
       </div>
       <div class="grid">
-        <article class="card">
+        <article class="card project-card">
           <h3>Nagelhexe</h3>
           <p>Eine kleine Android-App zur Motivation und Selbstkontrolle. Unaufdringlich, alltagstauglich, mit Humor und klaren Impulsen.</p>
           <span class="tag">Android · Motivation · Self-Control</span>
         </article>
 
-        <article class="card">
+        <article class="card project-card">
           <h3>Notizen</h3>
           <p>Private Offline-Notiz-App für Android. Keine Server, kein Tracking, keine Werbung. Erinnerungen werden ausschließlich lokal über Android-Benachrichtigungen ausgelöst.</p>
           <p class="links">
@@ -137,7 +137,7 @@ Keine Show. Keine Buzzwords. Nur Technik, Klarheit und Dinge, die funktionieren.
           <span class="tag">Android · Offline · Datenschutzfreundlich</span>
         </article>
 
-        <article class="card">
+        <article class="card project-card">
           <h3>KI-Sound &amp; Experimente</h3>
           <p>Texte, Vocals und KI-Sounds zum Ausprobieren zwischen Technik, Kreativität und Lernen. Keine Show, sondern echte Neugier.</p>
           <p class="links">
@@ -146,13 +146,13 @@ Keine Show. Keine Buzzwords. Nur Technik, Klarheit und Dinge, die funktionieren.
           <span class="tag">Audio · KI · Experimente</span>
         </article>
 
-        <article class="card">
+        <article class="card project-card">
           <h3>runlevel.eth</h3>
           <p>Spielwiese für Web3-Themen, Domains und Beobachtungen. Ohne Hype, dafür mit Verstand, Ruhe und einem gesunden Realitätssinn.</p>
           <span class="tag">Web3 · Domains · Experimente</span>
         </article>
 
-        <article class="card">
+        <article class="card project-card">
           <h3>Schachbrett</h3>
           <p>Ein leichtgewichtiges, browserbasiertes Schachbrett mit PGN-Replay, Koordinaten-Notation und optionaler Engine. Fokus: Klarheit, UI-Feinschliff, Logik.</p>
           <p class="links">
@@ -163,8 +163,6 @@ Keine Show. Keine Buzzwords. Nur Technik, Klarheit und Dinge, die funktionieren.
         </article>
       </div>
     </section>
-
-
 
     <section id="github" aria-labelledby="github-title">
       <div class="section-head">
@@ -193,9 +191,7 @@ Keine Show. Keine Buzzwords. Nur Technik, Klarheit und Dinge, die funktionieren.
         </div>
       </div>
     </section>
-  
-    </section>
-    <!-- Soundtrack -->
+
     <section id="soundtrack" aria-labelledby="soundtrack-title">
       <div class="section-head">
         <h2 id="soundtrack-title">Soundtrack</h2>
@@ -233,58 +229,24 @@ Keine Show. Keine Buzzwords. Nur Technik, Klarheit und Dinge, die funktionieren.
         </article>
       </div>
     </section>
-
   </main>
 
- <footer>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- </main>
-
- <footer>
-  <div class="footer-row">
-    <div>© <span id="year"></span> runlevel.eth – Tom &amp; Gina</div>
-    <div class="footer-links">
-      <a href="https://buymeacoffee.com/runlevel" target="_blank" rel="noopener noreferrer">☕ Buy me a coffee</a>
-      <a href="impressum.html">Impressum</a>
-      <a href="datenschutz.html">Datenschutz</a>
+  <footer>
+    <div class="footer-row">
+      <div>© <span id="year"></span> runlevel.eth – Tom &amp; Gina</div>
+      <div class="footer-links">
+        <a href="https://buymeacoffee.com/runlevel" target="_blank" rel="noopener noreferrer">☕ Buy me a coffee</a>
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+      </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
   <div id="runlevel-console" aria-hidden="true">
-  <span class="runlevel-user">tom@gina</span>:~$ runlevel<br>
-  N 5<br>
-  system ready · gina online · uptime ∞
-</div>
+    <span class="runlevel-user">tom@gina</span>:~$ runlevel<br>
+    N 5<br>
+    system ready · gina online · uptime ∞
+  </div>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();

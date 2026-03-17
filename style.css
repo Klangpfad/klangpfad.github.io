@@ -317,6 +317,7 @@ h3 {
   outline-offset: 3px;
 }
 
+/* Veredelter Hover */
 .card,
 .repo-card,
 .button,
@@ -325,14 +326,81 @@ h3 {
 .tag,
 .mini-tag,
 .hero-image {
-  transition: transform 0.18s ease, border-color 0.18s ease, background-color 0.18s ease, color 0.18s ease;
+  transition:
+    transform 0.22s ease,
+    border-color 0.22s ease,
+    background-color 0.22s ease,
+    color 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.card,
+.repo-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before,
+.repo-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: radial-gradient(
+    circle at top right,
+    rgba(127, 176, 255, 0.10),
+    transparent 40%
+  );
+  opacity: 0;
+  transition: opacity 0.22s ease;
 }
 
 .card:hover,
-.repo-card:hover,
+.repo-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(127, 176, 255, 0.34);
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.34),
+    0 0 0 1px rgba(127, 176, 255, 0.05),
+    0 0 24px rgba(63, 130, 255, 0.10);
+}
+
+.card:hover::before,
+.repo-card:hover::before {
+  opacity: 1;
+}
+
 .hero-image:hover {
   transform: translateY(-2px);
   border-color: rgba(127, 176, 255, 0.32);
+}
+
+/* Sweep-Glanz nur für Projektkarten */
+.project-card::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -120%;
+  width: 60%;
+  height: 200%;
+  pointer-events: none;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255,255,255,0.05) 30%,
+    rgba(127,176,255,0.25) 50%,
+    rgba(255,255,255,0.05) 70%,
+    transparent 100%
+  );
+  transform: rotate(18deg);
+  transition: left 0.65s ease;
+  opacity: 0;
+}
+
+.project-card:hover::after {
+  left: 120%;
+  opacity: 1;
 }
 
 .terminal {
@@ -526,7 +594,6 @@ body.legal::before {
     align-items: flex-start;
   }
 }
-
 
 .terminal {
   position: relative;
