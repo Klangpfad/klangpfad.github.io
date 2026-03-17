@@ -304,6 +304,8 @@ Keine Show. Keine Buzzwords. Nur Technik, Klarheit und Dinge, die funktionieren.
               </p>
             </article>`;
         }).join('');
+
+        setupCardTilt();
       })
       .catch(() => {
         repoGrid.innerHTML = `
@@ -312,6 +314,8 @@ Keine Show. Keine Buzzwords. Nur Technik, Klarheit und Dinge, die funktionieren.
             <p>Die Seite bleibt bewusst leichtgewichtig. Das Profil ist trotzdem direkt erreichbar.</p>
             <p class="links"><a href="https://github.com/Klangpfad" target="_blank" rel="noopener noreferrer">github.com/Klangpfad</a></p>
           </article>`;
+
+        setupCardTilt();
       });
 
     let runlevelBuffer = '';
@@ -340,6 +344,69 @@ Keine Show. Keine Buzzwords. Nur Technik, Klarheit und Dinge, die funktionieren.
         runlevelBuffer = '';
       }
     });
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const hasFinePointer = window.matchMedia('(pointer: fine)').matches;
+
+    document.body.classList.add('js-enhanced');
+    if (hasFinePointer) {
+      document.body.classList.add('has-fine-pointer');
+    }
+
+    if (!prefersReducedMotion && hasFinePointer) {
+      document.addEventListener('mousemove', (event) => {
+        document.body.style.setProperty('--mouse-x', `${event.clientX}px`);
+        document.body.style.setProperty('--mouse-y', `${event.clientY}px`);
+      });
+    }
+
+    if (!prefersReducedMotion) {
+      const sections = document.querySelectorAll('main section');
+      sections.forEach((section) => section.classList.add('reveal-on-scroll'));
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.12 });
+
+      sections.forEach((section) => observer.observe(section));
+    }
+
+    function setupCardTilt() {
+      if (prefersReducedMotion || !hasFinePointer) {
+        return;
+      }
+
+      const tiltCards = document.querySelectorAll('.project-card, .repo-card');
+
+      tiltCards.forEach((card) => {
+        if (card.dataset.tiltBound === 'true') {
+          return;
+        }
+
+        card.dataset.tiltBound = 'true';
+
+        card.addEventListener('mousemove', (event) => {
+          const rect = card.getBoundingClientRect();
+          const x = event.clientX - rect.left;
+          const y = event.clientY - rect.top;
+
+          const rotateX = ((y / rect.height) - 0.5) * -4;
+          const rotateY = ((x / rect.width) - 0.5) * 4;
+
+          card.style.transform = `translateY(-4px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = '';
+        });
+      });
+    }
+
+    setupCardTilt();
   </script>
 </body>
 </html>
