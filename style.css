@@ -5,8 +5,8 @@
   --panel-2: #161a25;
   --line: #23252f;
   --text: #f5f5f5;
-  --muted: #cbd1dd;
-  --muted-2: #8f95a3;
+  --muted: #c2cad8;
+  --muted-2: #98a0af;
   --accent: #7fb0ff;
   --accent-strong: #3f82ff;
   --glow: rgba(63, 130, 255, 0.18);
@@ -24,6 +24,11 @@ html {
 body {
   margin: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.58;
+  letter-spacing: 0.01em;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   background:
     radial-gradient(circle at top right, rgba(63, 130, 255, 0.12), transparent 28%),
     linear-gradient(180deg, #070910 0%, var(--bg) 28%, #070910 100%);
@@ -66,13 +71,16 @@ header {
 }
 
 .hero-text p {
-  margin: 0.45rem 0;
+  margin: 0.5rem 0;
   color: var(--muted);
-  max-width: 58ch;
+  max-width: 60ch;
+  line-height: 1.68;
 }
 
 .hero-copy {
-  font-size: 1.06rem;
+  font-size: 1.08rem;
+  line-height: 1.72;
+  color: #d7dfec;
 }
 
 .hero-actions,
@@ -193,12 +201,18 @@ h2 {
 h1,
 h2,
 h3 {
-  letter-spacing: -0.015em;
+  letter-spacing: -0.02em;
+  line-height: 1.14;
+}
+
+h3 {
+  line-height: 1.24;
 }
 
 .section-note {
   color: var(--muted-2);
   font-size: 0.95rem;
+  letter-spacing: 0.01em;
 }
 
 .grid,
@@ -253,6 +267,7 @@ h3 {
 .box p,
 .box li {
   color: var(--muted);
+  line-height: 1.66;
 }
 
 .card p,
@@ -261,7 +276,7 @@ h3 {
 }
 
 .grid .card p {
-  line-height: 1.58;
+  line-height: 1.66;
 }
 
 .grid .card .links {
@@ -278,6 +293,7 @@ h3 {
   padding: 0.16rem 0.5rem;
   background: rgba(255, 255, 255, 0.025);
   font-size: 0.72rem;
+  letter-spacing: 0.02em;
   color: var(--muted-2);
   margin-top: 0.45rem;
   border: 1px solid rgba(255, 255, 255, 0.035);
@@ -317,7 +333,7 @@ h3 {
   outline-offset: 3px;
 }
 
-/* Veredelter Hover */
+/* Veredelter Hover + Sweep bleiben aktiv */
 .card,
 .repo-card,
 .button,
@@ -431,6 +447,7 @@ h3 {
 .terminal-title {
   font-size: 0.82rem;
   color: var(--muted-2);
+  letter-spacing: 0.03em;
 }
 
 .terminal-body {
@@ -523,7 +540,7 @@ a:focus-visible {
 
 body.legal {
   padding: 2rem 1rem;
-  line-height: 1.65;
+  line-height: 1.72;
 }
 
 body.legal::before {
@@ -547,6 +564,11 @@ body.legal::before {
 
 .box ul {
   padding-left: 1.25rem;
+}
+
+.box p,
+.box li {
+  max-width: 70ch;
 }
 
 .small {
