@@ -404,6 +404,7 @@ h3 {
   will-change: transform;
 }
 
+/* Glow + Light Edge gemeinsam */
 .card::before,
 .repo-card::before {
   content: "";
@@ -411,11 +412,20 @@ h3 {
   inset: 0;
   pointer-events: none;
   border-radius: inherit;
-  background: radial-gradient(
-    circle at top right,
-    rgba(127, 176, 255, 0.10),
-    transparent 40%
-  );
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(127, 176, 255, 0.10),
+      transparent 40%
+    ),
+    linear-gradient(
+      120deg,
+      transparent 0%,
+      rgba(127, 176, 255, 0.04) 40%,
+      rgba(127, 176, 255, 0.12) 50%,
+      rgba(127, 176, 255, 0.04) 60%,
+      transparent 100%
+    );
   opacity: 0;
   transition: opacity 0.22s ease;
 }
