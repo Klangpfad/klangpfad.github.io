@@ -116,6 +116,7 @@ header {
 .hero-actions,
 .meta-row,
 .card .links,
+.repo-card .links,
 .contact-links,
 .footer-links {
   display: flex;
@@ -292,7 +293,15 @@ h3 {
   padding: 1.15rem 1.2rem;
 }
 
+/* Projektkarten */
 .grid .card {
+  display: flex;
+  flex-direction: column;
+  min-height: 220px;
+}
+
+/* GitHub-Karten */
+.repo-card {
   display: flex;
   flex-direction: column;
   min-height: 220px;
@@ -322,13 +331,20 @@ h3 {
   line-height: 1.66;
 }
 
-.grid .card .links {
-  margin-top: 0.75rem;
-  margin-bottom: 0.2rem;
+/* normale Textabsätze in Projektkarten */
+.grid .card p:not(.links) {
+  margin-bottom: 0.75rem;
 }
 
-.grid .card .tag {
+/* Links in Projektkarten nach unten drücken */
+.grid .card p.links {
   margin-top: auto;
+  margin-bottom: 0.45rem;
+}
+
+/* Tag direkt unter den Links halten */
+.grid .card .tag {
+  margin-top: 0;
 }
 
 .tag,
@@ -346,7 +362,8 @@ h3 {
   margin-top: 0;
 }
 
-.card .links a {
+.card .links a,
+.repo-card .links a {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
@@ -363,7 +380,8 @@ h3 {
     color 0.18s ease;
 }
 
-.card .links a:hover {
+.card .links a:hover,
+.repo-card .links a:hover {
   color: #a9c6ff;
   text-decoration: none;
   border-color: rgba(127, 176, 255, 0.28);
@@ -371,7 +389,8 @@ h3 {
   transform: translateY(-1px);
 }
 
-.card .links a:focus-visible {
+.card .links a:focus-visible,
+.repo-card .links a:focus-visible {
   outline: 2px solid var(--accent-strong);
   outline-offset: 3px;
 }
@@ -546,7 +565,12 @@ h3 {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin-top: 0.8rem;
+  margin-top: auto;
+}
+
+.repo-card .links {
+  margin-top: 0.6rem;
+  margin-bottom: 0;
 }
 
 .contact-card {
@@ -642,13 +666,15 @@ body.legal::before {
   .meta-row,
   .contact-links,
   .card .links,
+  .repo-card .links,
   .footer-links {
     gap: 0.55rem;
   }
 
   .button,
   .meta-pill,
-  .card .links a {
+  .card .links a,
+  .repo-card .links a {
     width: 100%;
     justify-content: center;
   }
@@ -664,7 +690,8 @@ body.legal::before {
     padding: 1rem;
   }
 
-  .grid .card {
+  .grid .card,
+  .repo-card {
     min-height: unset;
   }
 
