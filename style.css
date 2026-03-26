@@ -859,3 +859,37 @@ audio {
   width: 100%;
   margin-top: 1rem;
 }
+
+#soundtrack h2 {
+  margin-bottom: 1rem;
+}
+
+.soundtrack-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.2rem;
+}
+
+.media-column h2 {
+  margin: 0 0 2rem 0;
+}
+
+.soundtrack-grid {
+  align-items: stretch;
+}
+
+.media-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.media-column .card {
+  flex: 1;
+}
+
+.soundtrack-cover,
+.soundtrack-video {
+  max-height: 300px;
+  object-fit: contain;
+  background: #000; /* optional für saubere Balken */
+}
