@@ -237,16 +237,16 @@ section {
   margin-bottom: 1.1rem;
 }
 
-h2 {
-  font-size: 1.5rem;
-  margin: 0;
-}
-
 h1,
 h2,
 h3 {
   letter-spacing: -0.02em;
   line-height: 1.14;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 0;
 }
 
 h3 {
@@ -261,13 +261,15 @@ h3 {
 
 .grid,
 .stats,
-.github-grid {
+.github-grid,
+.soundtrack-grid {
   display: grid;
   gap: 1.2rem;
 }
 
 .grid {
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  align-items: stretch;
 }
 
 .stats {
@@ -276,6 +278,11 @@ h3 {
 
 .github-grid {
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.soundtrack-grid {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  align-items: stretch;
 }
 
 .card,
@@ -293,18 +300,13 @@ h3 {
   padding: 1.15rem 1.2rem;
 }
 
-/* Projektkarten */
-.grid .card {
-  display: flex;
-  flex-direction: column;
-  min-height: 220px;
-}
-
-/* GitHub-Karten */
+.grid .card,
+.soundtrack-grid .card,
 .repo-card {
   display: flex;
   flex-direction: column;
   min-height: 220px;
+  height: 100%;
 }
 
 .card h3,
@@ -331,22 +333,21 @@ h3 {
   max-width: none;
 }
 
-.grid .card p {
+.grid .card p,
+.soundtrack-grid .card p {
   line-height: 1.66;
 }
 
-/* normale Textabsätze in Projektkarten */
-.grid .card p:not(.links) {
+.grid .card p:not(.links),
+.soundtrack-grid .card p:not(.links) {
   margin-bottom: 0.75rem;
 }
 
-/* Links in Projektkarten nach unten drücken */
 .grid .card p.links {
   margin-top: auto;
   margin-bottom: 0.45rem;
 }
 
-/* Tag direkt unter den Links halten */
 .grid .card .tag {
   margin-top: 0;
 }
@@ -427,7 +428,6 @@ h3 {
   will-change: transform;
 }
 
-/* Glow + Light Edge gemeinsam */
 .card::before,
 .repo-card::before {
   content: "";
@@ -436,11 +436,7 @@ h3 {
   pointer-events: none;
   border-radius: inherit;
   background:
-    radial-gradient(
-      circle at top right,
-      rgba(127, 176, 255, 0.10),
-      transparent 40%
-    ),
+    radial-gradient(circle at top right, rgba(127, 176, 255, 0.10), transparent 40%),
     linear-gradient(
       120deg,
       transparent 0%,
@@ -473,7 +469,6 @@ h3 {
   border-color: rgba(127, 176, 255, 0.32);
 }
 
-/* Sweep-Glanz nur für Projektkarten */
 .project-card::after {
   content: "";
   position: absolute;
@@ -501,6 +496,7 @@ h3 {
 }
 
 .terminal {
+  position: relative;
   overflow: hidden;
 }
 
@@ -532,11 +528,37 @@ h3 {
 }
 
 .terminal-body {
+  position: relative;
   margin: 0;
   padding: 1.1rem 1rem 1.25rem;
   font: 0.95rem/1.75 "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
   color: #d9e7ff;
   white-space: pre-wrap;
+}
+
+.terminal::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow:
+    0 0 0 1px rgba(127, 176, 255, 0.08),
+    0 0 22px rgba(63, 130, 255, 0.12),
+    0 0 60px rgba(63, 130, 255, 0.08);
+}
+
+.terminal-body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse at 50% 30%,
+      rgba(127, 176, 255, 0.05),
+      transparent 70%
+    );
 }
 
 .prompt {
@@ -661,84 +683,6 @@ body.legal::before {
   font-size: 0.92rem;
 }
 
-@media (max-width: 720px) {
-  header {
-    padding-top: 2rem;
-  }
-
-  .hero-actions,
-  .meta-row,
-  .contact-links,
-  .card .links,
-  .repo-card .links,
-  .footer-links {
-    gap: 0.55rem;
-  }
-
-  .button,
-  .meta-pill,
-  .card .links a,
-  .repo-card .links a {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .grid,
-  .github-grid,
-  .stats {
-    grid-template-columns: 1fr;
-  }
-
-  .card,
-  .repo-card {
-    padding: 1rem;
-  }
-
-  .grid .card,
-  .repo-card {
-    min-height: unset;
-  }
-
-  .footer-row,
-  .section-head,
-  .repo-card .repo-top {
-    align-items: flex-start;
-  }
-}
-
-.terminal {
-  position: relative;
-}
-
-.terminal::after {
-  content: "";
-  position: absolute;
-  inset: -1px;
-  border-radius: inherit;
-  pointer-events: none;
-  box-shadow:
-    0 0 0 1px rgba(127, 176, 255, 0.08),
-    0 0 22px rgba(63, 130, 255, 0.12),
-    0 0 60px rgba(63, 130, 255, 0.08);
-}
-
-.terminal-body {
-  position: relative;
-}
-
-.terminal-body::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(
-      ellipse at 50% 30%,
-      rgba(127, 176, 255, 0.05),
-      transparent 70%
-    );
-}
-
 #runlevel-console {
   position: fixed;
   bottom: 18px;
@@ -769,29 +713,6 @@ body.legal::before {
 
 #runlevel-console .runlevel-user {
   color: #86b4ff;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  *,
-  *::before,
-  *::after {
-    transition: none !important;
-    animation: none !important;
-  }
-
-  body::after {
-    display: none;
-  }
-
-  .js-enhanced .reveal-on-scroll,
-  .js-enhanced .reveal-on-scroll.visible {
-    opacity: 1;
-    transform: none;
-  }
 }
 
 .system-status {
@@ -830,23 +751,32 @@ body.legal::before {
   animation: pulse-glow 1.8s ease-in-out infinite;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .status-dot {
-    animation: none;
-  }
-}
-
-
 .status-sep {
   opacity: 0.55;
+}
+
+.media-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.media-column h2 {
+  margin: 0 0 2rem 0;
+}
+
+.media-column .card {
+  flex: 1;
 }
 
 .soundtrack-cover,
 .soundtrack-video {
   width: 100%;
-  border-radius: 16px;
+  max-height: 300px;
   margin-top: 0.8rem;
   border: 1px solid var(--line);
+  border-radius: 16px;
+  object-fit: contain;
+  background: #000;
 }
 
 .soundtrack-meta {
@@ -860,36 +790,76 @@ audio {
   margin-top: 1rem;
 }
 
-#soundtrack h2 {
-  margin-bottom: 1rem;
+@media (max-width: 720px) {
+  header {
+    padding-top: 2rem;
+  }
+
+  .hero-actions,
+  .meta-row,
+  .contact-links,
+  .card .links,
+  .repo-card .links,
+  .footer-links {
+    gap: 0.55rem;
+  }
+
+  .button,
+  .meta-pill,
+  .card .links a,
+  .repo-card .links a {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .grid,
+  .github-grid,
+  .stats,
+  .soundtrack-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card,
+  .repo-card {
+    padding: 1rem;
+  }
+
+  .grid .card,
+  .soundtrack-grid .card,
+  .repo-card {
+    min-height: unset;
+  }
+
+  .footer-row,
+  .section-head,
+  .repo-card .repo-top {
+    align-items: flex-start;
+  }
 }
 
-.soundtrack-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.2rem;
-}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 
-.media-column h2 {
-  margin: 0 0 2rem 0;
-}
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
 
-.soundtrack-grid {
-  align-items: stretch;
-}
+  body::after {
+    display: none;
+  }
 
-.media-column {
-  display: flex;
-  flex-direction: column;
-}
+  .js-enhanced .reveal-on-scroll,
+  .js-enhanced .reveal-on-scroll.visible {
+    opacity: 1;
+    transform: none;
+  }
 
-.media-column .card {
-  flex: 1;
-}
-
-.soundtrack-cover,
-.soundtrack-video {
-  max-height: 300px;
-  object-fit: contain;
-  background: #000; /* optional für saubere Balken */
+  .status-dot {
+    animation: none;
+  }
 }
