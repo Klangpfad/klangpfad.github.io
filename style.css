@@ -340,7 +340,7 @@ h3 {
 }
 
 .grid .card .tag {
-  margin-top: 0;
+  margin-top: auto;
 }
 
 .tag,
@@ -827,8 +827,7 @@ body.legal::before {
 }
 
 .media-card .soundtrack-meta,
-.media-card audio,
-.media-card video {
+.media-card audio {
   margin-top: auto;
 }
 
