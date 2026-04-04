@@ -1070,3 +1070,22 @@ audio {
   max-width: 840px;
   margin: 0 auto;
 }
+
+/* Closing Statement */
+
+.closing-statement {
+  margin-top: -1.4rem;
+  padding: 1.2rem 0 2.2rem;
+}
+
+
+.closing-statement .container {
+  text-align: center;
+}
+
+.closing-statement p {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(220, 232, 255, 0.82);
+}
