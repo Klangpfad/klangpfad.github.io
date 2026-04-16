@@ -407,7 +407,12 @@ Keine Show. Keine Buzzwords. Nur Technik, Klarheit und Dinge, die funktionieren.
         repoGrid.innerHTML = visibleRepos.map((repo) => {
           const description = repo.description ? escapeHtml(repo.description) : 'Keine Beschreibung hinterlegt.';
           const language = repo.language ? `<span class="mini-tag">${escapeHtml(repo.language)}</span>` : '';
-          const homepage = repo.homepage ? `<a href="${repo.homepage}" target="_blank" rel="noopener noreferrer">Live</a>` : '';
+          const liveFallbacks = {
+            'gina-tv': 'https://klangpfad.github.io/gina-tv',
+            schachbrett: 'https://klangpfad.github.io/schachbrett'
+          };
+          const liveUrl = repo.homepage || liveFallbacks[repo.name.toLowerCase()] || '';
+          const homepage = liveUrl ? `<a href="${liveUrl}" target="_blank" rel="noopener noreferrer">Live</a>` : '';
           const updated = new Date(repo.updated_at).toLocaleDateString('de-DE');
 
           return `
