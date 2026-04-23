@@ -65,6 +65,7 @@
           <div class="gina-dashboard-bar__brand-copy">
             <h2 id="gina-dashboard-title">Gina Dashboard</h2>
             <span class="gina-dashboard-bar__linked">linked</span>
+            <span class="gina-dashboard-bar__latency" id="latencyValue">↯ LATENCY 18 ms</span>
           </div>
         </div>
 
@@ -72,22 +73,22 @@
           <h3 id="gina-world-time-title">World Time</h3>
           <div class="gina-dashboard-bar__metrics gina-dashboard-bar__metrics--time">
             <div class="gina-dashboard-bar__metric">
-              <span class="gina-dashboard-bar__label">Berlin</span>
-              <span class="gina-dashboard-bar__value" data-timezone="Europe/Berlin">--:--:--</span>
+              <span class="gina-dashboard-bar__label"><span class="gina-dashboard-bar__flag gina-dashboard-bar__flag--de" aria-hidden="true"></span>Berlin</span>
+              <span class="gina-dashboard-bar__value gina-dashboard-bar__value--local" data-timezone="Europe/Berlin">--:--:--</span>
               <span class="gina-dashboard-bar__subvalue" data-date-timezone="Europe/Berlin">--.--.----</span>
             </div>
             <div class="gina-dashboard-bar__metric">
-              <span class="gina-dashboard-bar__label">London</span>
+              <span class="gina-dashboard-bar__label"><span class="gina-dashboard-bar__flag gina-dashboard-bar__flag--gb" aria-hidden="true"></span>London</span>
               <span class="gina-dashboard-bar__value" data-timezone="Europe/London">--:--:--</span>
               <span class="gina-dashboard-bar__subvalue" data-date-timezone="Europe/London">--.--.----</span>
             </div>
             <div class="gina-dashboard-bar__metric">
-              <span class="gina-dashboard-bar__label">New York</span>
+              <span class="gina-dashboard-bar__label"><span class="gina-dashboard-bar__flag gina-dashboard-bar__flag--us" aria-hidden="true"></span>New York</span>
               <span class="gina-dashboard-bar__value" data-timezone="America/New_York">--:--:--</span>
               <span class="gina-dashboard-bar__subvalue" data-date-timezone="America/New_York">--.--.----</span>
             </div>
             <div class="gina-dashboard-bar__metric">
-              <span class="gina-dashboard-bar__label">Tokyo</span>
+              <span class="gina-dashboard-bar__label"><span class="gina-dashboard-bar__flag gina-dashboard-bar__flag--jp" aria-hidden="true"></span>Tokyo</span>
               <span class="gina-dashboard-bar__value" data-timezone="Asia/Tokyo">--:--:--</span>
               <span class="gina-dashboard-bar__subvalue" data-date-timezone="Asia/Tokyo">--.--.----</span>
             </div>
@@ -463,6 +464,18 @@ Keine Show. Keine Buzzwords. Nur Technik, Klarheit und Dinge, die funktionieren.
       updateDashboardTimes();
 
       setInterval(updateDashboardTimes, 1000);
+    }
+
+    const latencyValueElement = document.getElementById('latencyValue');
+
+    if (latencyValueElement) {
+      function updateLatencyValue() {
+        const latency = Math.floor(Math.random() * 21) + 10;
+        latencyValueElement.textContent = `↯ LATENCY ${latency} ms`;
+      }
+
+      updateLatencyValue();
+      setInterval(updateLatencyValue, 5000);
     }
 
     const repoGrid = document.getElementById('repo-grid');
