@@ -54,6 +54,48 @@
   </header>
 
   <main>
+    <section class="gina-dashboard-strip" aria-labelledby="gina-dashboard-title">
+      <div class="gina-dashboard-bar">
+        <div class="gina-dashboard-bar__brand">
+          <div class="gina-dashboard-bar__icon" aria-hidden="true">
+            <span class="gina-dashboard-bar__orbit"></span>
+            <span class="gina-dashboard-bar__orbit gina-dashboard-bar__orbit--reverse"></span>
+            <span class="gina-dashboard-bar__nucleus"></span>
+          </div>
+          <div class="gina-dashboard-bar__brand-copy">
+            <h2 id="gina-dashboard-title">Gina Dashboard</h2>
+            <span class="gina-dashboard-bar__linked">linked</span>
+          </div>
+        </div>
+
+        <div class="gina-dashboard-bar__section" aria-labelledby="gina-world-time-title">
+          <h3 id="gina-world-time-title">World Time</h3>
+          <div class="gina-dashboard-bar__metrics gina-dashboard-bar__metrics--time">
+            <div class="gina-dashboard-bar__metric">
+              <span class="gina-dashboard-bar__label">Berlin</span>
+              <span class="gina-dashboard-bar__value" data-timezone="Europe/Berlin">--:--:--</span>
+              <span class="gina-dashboard-bar__subvalue" data-date-timezone="Europe/Berlin">--.--.----</span>
+            </div>
+            <div class="gina-dashboard-bar__metric">
+              <span class="gina-dashboard-bar__label">London</span>
+              <span class="gina-dashboard-bar__value" data-timezone="Europe/London">--:--:--</span>
+              <span class="gina-dashboard-bar__subvalue" data-date-timezone="Europe/London">--.--.----</span>
+            </div>
+            <div class="gina-dashboard-bar__metric">
+              <span class="gina-dashboard-bar__label">New York</span>
+              <span class="gina-dashboard-bar__value" data-timezone="America/New_York">--:--:--</span>
+              <span class="gina-dashboard-bar__subvalue" data-date-timezone="America/New_York">--.--.----</span>
+            </div>
+            <div class="gina-dashboard-bar__metric">
+              <span class="gina-dashboard-bar__label">Tokyo</span>
+              <span class="gina-dashboard-bar__value" data-timezone="Asia/Tokyo">--:--:--</span>
+              <span class="gina-dashboard-bar__subvalue" data-date-timezone="Asia/Tokyo">--.--.----</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section aria-labelledby="terminal-title">
       <div class="section-head">
         <h2 id="terminal-title">runlevel console</h2>
@@ -373,6 +415,55 @@ Keine Show. Keine Buzzwords. Nur Technik, Klarheit und Dinge, die funktionieren.
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    const dashboardTimeElements = document.querySelectorAll('[data-timezone]');
+    const dashboardDateElements = document.querySelectorAll('[data-date-timezone]');
+
+    if (dashboardTimeElements.length) {
+      const timeFormatters = {};
+      const dateFormatters = {};
+
+      dashboardTimeElements.forEach((element) => {
+        const timeZone = element.dataset.timezone;
+
+        timeFormatters[timeZone] = new Intl.DateTimeFormat('de-DE', {
+          timeZone,
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+          hour12: false
+        });
+      });
+
+      dashboardDateElements.forEach((element) => {
+        const timeZone = element.dataset.dateTimezone;
+
+        dateFormatters[timeZone] = new Intl.DateTimeFormat('de-DE', {
+          timeZone,
+          day: '2-digit',
+          month: '2-digit',
+          year: 'numeric'
+        });
+      });
+
+      function updateDashboardTimes() {
+        const now = new Date();
+
+        dashboardTimeElements.forEach((element) => {
+          const timeZone = element.dataset.timezone;
+          element.textContent = timeFormatters[timeZone].format(now);
+        });
+
+        dashboardDateElements.forEach((element) => {
+          const timeZone = element.dataset.dateTimezone;
+          element.textContent = dateFormatters[timeZone].format(now);
+        });
+      }
+
+      updateDashboardTimes();
+
+      setInterval(updateDashboardTimes, 1000);
+    }
 
     const repoGrid = document.getElementById('repo-grid');
     const repoEndpoint = 'https://api.github.com/users/Klangpfad/repos?sort=updated&per_page=6';
