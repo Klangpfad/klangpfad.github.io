@@ -225,7 +225,7 @@ main {
 
 .gina-dashboard-bar {
   display: grid;
-  grid-template-columns: minmax(180px, 0.9fr) minmax(0, 1fr);
+  grid-template-columns: minmax(152px, 0.62fr) minmax(0, 1.38fr);
   gap: 0.5rem;
   align-items: stretch;
   padding: 0.95rem 1rem;
@@ -249,17 +249,19 @@ main {
 
 .gina-dashboard-bar__section {
   border-left: 1px solid rgba(127, 176, 255, 0.12);
+  padding-left: 0.9rem;
 }
 
 .gina-dashboard-bar__brand {
   display: flex;
   align-items: center;
-  gap: 0.9rem;
+  gap: 0.7rem;
+  padding-right: 0.6rem;
 }
 
 .gina-dashboard-bar__brand-copy {
   display: grid;
-  gap: 0.35rem;
+  gap: 0.22rem;
 }
 
 .gina-dashboard-bar__brand-copy h2,
