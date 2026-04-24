@@ -462,12 +462,7 @@ Keine Show. Keine Buzzwords. Nur Technik, Klarheit und Dinge, die funktionieren.
 
         dashboardTimeElements.forEach((element) => {
           const timeZone = element.dataset.timezone;
-          const formattedTime = timeFormatters[timeZone].format(now);
-          const hour = Number.parseInt(formattedTime.split(':')[0], 10);
-          const normalizedHour = hour === 24 ? 0 : hour;
-
-          element.dataset.dayNight = normalizedHour >= 6 && normalizedHour < 18 ? '🌞' : '🌙';
-          element.textContent = formattedTime;
+          element.textContent = timeFormatters[timeZone].format(now);
         });
 
         dashboardDateElements.forEach((element) => {
@@ -528,6 +523,7 @@ Keine Show. Keine Buzzwords. Nur Technik, Klarheit und Dinge, die funktionieren.
           const language = repo.language ? `<span class="mini-tag">${escapeHtml(repo.language)}</span>` : '';
           const liveFallbacks = {
             'gina-tv': 'https://klangpfad.github.io/gina-tv',
+            'crypto-kurse': 'https://klangpfad.github.io/crypto-kurse/',
             schachbrett: 'https://klangpfad.github.io/schachbrett'
           };
           const liveUrl = repo.homepage || liveFallbacks[repo.name.toLowerCase()] || '';
