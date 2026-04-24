@@ -225,7 +225,7 @@ main {
 
 .gina-dashboard-bar {
   display: grid;
-  grid-template-columns: minmax(152px, 0.62fr) minmax(0, 1.38fr);
+  grid-template-columns: minmax(142px, 0.54fr) minmax(0, 1.46fr);
   gap: 0.5rem;
   align-items: stretch;
   padding: 0.95rem 1rem;
@@ -255,8 +255,9 @@ main {
 .gina-dashboard-bar__brand {
   display: flex;
   align-items: center;
-  gap: 0.7rem;
-  padding-right: 0.6rem;
+  gap: 0.55rem;
+  padding-left: 0.7rem;
+  padding-right: 0.45rem;
 }
 
 .gina-dashboard-bar__brand-copy {
@@ -296,8 +297,8 @@ main {
 .gina-dashboard-bar__latency {
   display: inline-flex;
   align-items: center;
-  color: rgba(127, 176, 255, 0.82);
-  font-size: 0.68rem;
+  color: rgba(127, 176, 255, 0.7);
+  font-size: 0.64rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   font-variant-numeric: tabular-nums;
@@ -434,6 +435,14 @@ main {
   letter-spacing: 0.04em;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
+}
+
+.gina-dashboard-bar__value::before {
+  content: attr(data-day-night);
+  display: inline-block;
+  margin-right: 4px;
+  font-size: 0.78em;
+  opacity: 0.78;
 }
 
 .gina-dashboard-bar__value--local {

@@ -462,7 +462,12 @@ Keine Show. Keine Buzzwords. Nur Technik, Klarheit und Dinge, die funktionieren.
 
         dashboardTimeElements.forEach((element) => {
           const timeZone = element.dataset.timezone;
-          element.textContent = timeFormatters[timeZone].format(now);
+          const formattedTime = timeFormatters[timeZone].format(now);
+          const hour = Number.parseInt(formattedTime.split(':')[0], 10);
+          const normalizedHour = hour === 24 ? 0 : hour;
+
+          element.dataset.dayNight = normalizedHour >= 6 && normalizedHour < 18 ? '🌞' : '🌙';
+          element.textContent = formattedTime;
         });
 
         dashboardDateElements.forEach((element) => {
