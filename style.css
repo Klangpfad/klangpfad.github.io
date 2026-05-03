@@ -22,10 +22,12 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   margin: 0;
+  overflow-x: hidden;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   line-height: 1.64;
   letter-spacing: 0;
@@ -94,6 +96,7 @@ header {
   position: relative;
   padding: 4.1rem 1.5rem 2.9rem;
   max-width: 1080px;
+  min-width: 0;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
@@ -280,12 +283,15 @@ header::before {
 
 main {
   max-width: 1080px;
+  min-width: 0;
   margin: 0 auto;
   padding: 0 1.5rem 3rem;
 }
 
 .gina-dashboard-strip {
   margin: 0 0 1.8rem;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .gina-dashboard-bar {
@@ -300,6 +306,9 @@ main {
   box-shadow: var(--shadow);
   backdrop-filter: blur(6px);
   overflow: hidden;
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
 }
 
 .gina-dashboard-bar,
@@ -310,6 +319,7 @@ main {
 .gina-dashboard-bar__brand,
 .gina-dashboard-bar__section {
   min-width: 0;
+  max-width: 100%;
   padding: 0.35rem 1rem;
 }
 
@@ -329,6 +339,7 @@ main {
 .gina-dashboard-bar__brand-copy {
   display: grid;
   gap: 0.22rem;
+  min-width: 0;
 }
 
 .gina-dashboard-bar__brand-copy h2,
@@ -418,10 +429,14 @@ main {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 0.5rem;
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
 }
 
 .gina-dashboard-bar__metric {
   min-width: 0;
+  max-width: 100%;
   display: grid;
   gap: 0.35rem;
   padding: 0 1rem;
@@ -584,11 +599,25 @@ main {
 @media (max-width: 720px) {
   .gina-dashboard-bar {
     gap: 0;
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
   }
 
+  .gina-dashboard-bar__metrics,
   .gina-dashboard-bar__metrics--time {
     grid-template-columns: 1fr;
     gap: 0.8rem 1rem;
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .gina-dashboard-bar__metrics--time .gina-dashboard-bar__metric,
+  .gina-dashboard-bar__metrics--time .gina-dashboard-bar__metric:nth-child(3n + 1),
+  .gina-dashboard-bar__metrics--time .gina-dashboard-bar__metric:nth-child(3n) {
+    padding: 0;
+    border-left: 0;
   }
 }
 
@@ -884,6 +913,8 @@ h3 {
 .terminal {
   position: relative;
   overflow: hidden;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .terminal-top {
@@ -911,6 +942,14 @@ h3 {
   font-size: 0.82rem;
   color: var(--muted-2);
   letter-spacing: 0.03em;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+pre {
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: auto;
 }
 
 .terminal-body {
@@ -920,6 +959,11 @@ h3 {
   font: 0.95rem/1.75 "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
   color: #d9e7ff;
   white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: hidden;
 }
 
 .terminal::after {
@@ -1075,6 +1119,8 @@ body.legal::before {
   left: 50%;
   transform: translateX(-50%) translateY(20px);
   width: min(680px, 92vw);
+  max-width: calc(100vw - 2rem);
+  min-width: 0;
   background: #0b0e17;
   border: 1px solid rgba(127, 176, 255, 0.25);
   border-radius: 12px;
@@ -1090,6 +1136,9 @@ body.legal::before {
     opacity 0.35s ease,
     transform 0.35s ease;
   z-index: 999;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  overflow-x: hidden;
 }
 
 #runlevel-console.show {
@@ -1284,10 +1333,15 @@ audio {
   .gina-dashboard-bar {
     grid-template-columns: 1fr;
     padding: 0.9rem;
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
   }
 
   .gina-dashboard-bar__brand,
   .gina-dashboard-bar__section {
+    min-width: 0;
+    max-width: 100%;
     padding: 0.7rem 0;
   }
 
@@ -1299,9 +1353,28 @@ audio {
   .gina-dashboard-bar__metrics {
     grid-template-columns: 1fr;
     gap: 0.8rem 0.9rem;
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .gina-dashboard-bar__metrics--time {
+    grid-template-columns: 1fr;
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
   }
 
   .gina-dashboard-bar__metric {
+    min-width: 0;
+    max-width: 100%;
+    padding: 0;
+    border-left: 0;
+  }
+
+  .gina-dashboard-bar__metrics--time .gina-dashboard-bar__metric,
+  .gina-dashboard-bar__metrics--time .gina-dashboard-bar__metric:nth-child(3n + 1),
+  .gina-dashboard-bar__metrics--time .gina-dashboard-bar__metric:nth-child(3n) {
     padding: 0;
     border-left: 0;
   }
