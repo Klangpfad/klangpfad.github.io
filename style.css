@@ -116,6 +116,27 @@ header::before {
   z-index: -1;
 }
 
+.hero-legal-nav {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.85rem;
+  font-size: 0.9rem;
+}
+
+.hero-legal-nav a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.hero-legal-nav a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
 .hero-text {
   flex: 1 1 320px;
 }
@@ -1488,7 +1509,7 @@ audio {
 }
 
 .site-header .container {
-  max-width: 840px;
+  max-width: 1080px;
   margin: 0 auto;
 }
 
@@ -1538,13 +1559,14 @@ audio {
 }
 
 .content-page {
-  max-width: 840px;
+  max-width: 1080px;
   margin: 0 auto;
-  padding: 2.5rem 0 3rem;
+  padding: 0 1.5rem 3rem;
 }
  
 .panel {
-  max-width: 840px;
+  max-width: 1080px;
+  margin: 0;
   padding: 1.6rem;
   border-radius: 20px;
   background: linear-gradient(180deg, rgba(22, 26, 37, 0.95), rgba(17, 19, 28, 0.95));
@@ -1595,7 +1617,7 @@ audio {
 }
 
 .site-header .container {
-  max-width: 840px;
+  max-width: 1080px;
   margin: 0 auto;
 }
 
